@@ -103,15 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     class Particle {
         constructor() {
-            const isMobile = window.innerWidth <= 480;
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            // On mobile high-DPI screens, particles need to be larger to be visible
-            this.size = isMobile ? (Math.random() * 3 + 1.5) : (Math.random() * 2 + 1);
+            this.size = Math.random() * 2 + 1; // Size 1px to 3px
             this.speedX = (Math.random() * 0.5 - 0.25) * (particleSpeed / 3);
             this.speedY = (Math.random() * 1.5 + 0.5) * (particleSpeed / 3);
-            // Slightly higher opacity on mobile to contrast against card background
-            this.opacity = isMobile ? (Math.random() * 0.7 + 0.3) : (Math.random() * 0.6 + 0.2);
+            this.opacity = Math.random() * 0.6 + 0.2;
             this.glowColor = 'rgba(255, 255, 255, 0.3)';
         }
 
@@ -130,30 +127,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         draw() {
-            const isMobile = window.innerWidth <= 480;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-            
-            // Mobile devices struggle with canvas shadows, disable for performance and compatibility
-            if (!isMobile) {
-                ctx.shadowBlur = this.size * 2;
-                ctx.shadowColor = 'rgba(255, 255, 255, 0.4)';
-            }
-            
+            ctx.shadowBlur = this.size * 2;
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.4)';
             ctx.fill();
-            
-            if (!isMobile) {
-                ctx.shadowBlur = 0; // Reset shadow for efficiency
-            }
+            ctx.shadowBlur = 0; // Reset shadow for efficiency
         }
     }
 
     function initParticles() {
         particlesArray = [];
-        const isMobile = window.innerWidth <= 480;
-        const density = isMobile ? 6000 : 12000; // More density on mobile
-        const numberOfParticles = Math.floor((canvas.width * canvas.height) / density);
+        // Responsive particle count with a minimum of 85 particles for clear visibility on mobile screens
+        const calculatedParticles = Math.floor((canvas.width * canvas.height) / 10000);
+        const numberOfParticles = Math.max(85, calculatedParticles);
         for (let i = 0; i < numberOfParticles; i++) {
             particlesArray.push(new Particle());
         }
