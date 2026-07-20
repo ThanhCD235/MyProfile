@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Minh Thành - Profile Card</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas for Interactive Floating Particles -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        
+        <!-- Mobile Mockup Frame / Card Container -->
+        <main class="preview-card">
+            
+
+
+            <!-- Scrollable Content Viewport -->
+            <div class="card-scroll-view">
+                
+                <!-- Profile Identity Section -->
+                <section class="profile-hero">
+                    <div class="avatar-container">
+                        <img src="avatar.jpg" alt="Nguyễn Minh Thành Avatar" class="avatar-img">
+                        <div class="avatar-ring"></div>
+                    </div>
+                    <div class="profile-name-row">
+                        <h2 class="profile-name">Nguyễn Minh Thành</h2>
+                        <span class="verified-badge">
+                            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Xác minh
+                        </span>
+                    </div>
+                </section>
+
+
+                <!-- Service Description Card -->
+                <section class="info-card service-card">
+                    <div class="service-list">
+                        <div class="service-row">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="code-icon">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            <span class="service-text text-uppercase">Thiết kế website theo yêu cầu</span>
+                        </div>
+                        <div class="service-row">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chart-icon">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                            <span class="service-text text-uppercase">Chuẩn SEO, Chuẩn UX/UI</span>
+                        </div>
+                        <div class="service-row">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shield-check-icon">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <polyline points="9 11 11 13 15 9"></polyline>
+                            </svg>
+                            <span class="service-text text-uppercase">Bảo hành đến khi sập Google</span>
+                        </div>
+                        <div class="service-row promo-row">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="gift-icon" style="color: #f59e0b;">
+                                <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                                <rect x="2" y="7" width="20" height="5"></rect>
+                                <line x1="12" y1="22" x2="12" y2="7"></line>
+                                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                            </svg>
+                            <span class="service-text text-uppercase">BÁN TUT GOOGLE AI PRO <span class="badge-accent">TẶNG EBOOK KINH DOANH THỰC CHIẾN</span></span>
+                        </div>
+                        <div class="service-row zalo-row">
+                            <span class="zalo-label">ZALO:</span>
+                            <a href="https://zalo.me/0762244113" target="_blank" class="zalo-link" id="zalo-btn">0762.244.113</a>
+                        </div>
+                        <!-- Mini Music Player directly on Main Card -->
+                        <div class="main-player-row">
+                            <div class="main-player-track-info">
+                                <span class="main-player-track-name" id="main-track-name">Đang tải nhạc...</span>
+                                <span class="main-player-track-artist" id="main-track-artist">Vui lòng chờ</span>
+                            </div>
+                            <div class="main-player-controls">
+                                <button class="main-player-btn" id="main-prev-btn" aria-label="Bài trước">
+                                    <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor">
+                                        <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                                        <line x1="5" y1="4" x2="5" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                                    </svg>
+                                </button>
+                                <button class="main-player-btn play-pause-btn" id="main-play-btn" aria-label="Phát/Tạm dừng">
+                                    <svg class="play-icon" viewBox="0 0 24 24" width="10" height="10" fill="currentColor">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                    <svg class="pause-icon hidden" viewBox="0 0 24 24" width="10" height="10" fill="currentColor">
+                                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                    </svg>
+                                </button>
+                                <button class="main-player-btn" id="main-next-btn" aria-label="Bài tiếp theo">
+                                    <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor">
+                                        <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                                        <line x1="19" y1="4" x2="19" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Actions List Buttons -->
+                <section class="actions-section">
+                    <!-- Call Button -->
+                    <a href="tel:0762244113" class="action-btn call-btn">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="btn-icon">
+                            <path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <span>Gọi ngay</span>
+                    </a>
+
+                    <!-- Facebook Button -->
+                    <a href="https://www.facebook.com/share/1PGWL6BvHP/?mibextid=wwXIfr" target="_blank" class="action-btn facebook-btn">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="btn-icon">
+                            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+                        </svg>
+                        <span>Facebook</span>
+                    </a>
+
+                    <!-- TikTok Button -->
+                    <a href="https://www.tiktok.com/@tamtrang010423?is_from_webapp=1&sender_device=pc" target="_blank" class="action-btn tiktok-btn">
+                        <!-- Custom TikTok SVG Path -->
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="btn-icon">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.95.83 2.19 1.4 3.46 1.5v3.47c-1.68-.07-3.32-.73-4.57-1.84v6.86c0 3.82-2.73 7.37-6.57 7.79-4.27.53-8.23-2.52-8.33-6.84-.21-4.71 4.27-8.73 8.92-7.85v3.52c-2.4-.53-4.76 1.04-5.11 3.44-.45 2.62 1.63 5.09 4.28 4.96 2.13.04 3.99-1.63 4.02-3.76.01-2.91.01-8.56.01-11.47l-.7-.04z"/>
+                        </svg>
+                        <span>TikTok</span>
+                    </a>
+
+                    <!-- GitHub Button -->
+                    <a href="https://github.com/ThanhCD235" target="_blank" class="action-btn github-btn">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" class="btn-icon">
+                            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                </section>
+            </div>
+
+            <!-- Card Footer Controls / Floating HUD -->
+            <footer class="card-footer">
+                <div class="fps-counter" id="fps-display">
+                    <span class="flash-bullet">⚡</span> FPS: <span id="fps-val">60.0</span>
+                </div>
+                <button class="settings-trigger" id="settings-btn" aria-label="Cấu hình hệ thống">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Interactive Neon Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cấu Hình Giao Diện</h3>
+                <button class="close-modal-btn" id="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label>Chủ Đề Ánh Sáng (Neon Theme)</label>
+                    <div class="theme-options">
+                        <button class="theme-opt-btn active" data-theme="cyber-red" style="--btn-color: #ef4444;">Cyber Red</button>
+                        <button class="theme-opt-btn" data-theme="ocean-blue" style="--btn-color: #3b82f6;">Ocean Blue</button>
+                        <button class="theme-opt-btn" data-theme="matrix-green" style="--btn-color: #22c55e;">Matrix Green</button>
+                        <button class="theme-opt-btn" data-theme="neon-purple" style="--btn-color: #a855f7;">Neon Purple</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Hiệu Ứng Bầu Trời (Particles)</label>
+                    <div class="toggle-control">
+                        <span>Bật Tuyết / Sao Bay</span>
+                        <input type="checkbox" id="particle-toggle" checked>
+                    </div>
+                    <div class="slider-control">
+                        <span>Tốc độ hạt:</span>
+                        <input type="range" id="particle-speed" min="1" max="10" value="3">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Âm Thanh Nền (Ambient)</label>
+                    <div class="audio-player-widget">
+                        <div class="track-info">
+                            <span id="current-track-name" class="track-name">Synthwave Loop</span>
+                            <span id="current-track-artist" class="track-artist">Retrowave</span>
+                        </div>
+                        <div class="audio-controls-group">
+                            <button class="player-btn" id="prev-track-btn" aria-label="Bài trước">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                                    <line x1="5" y1="4" x2="5" y2="20" stroke="currentColor" stroke-width="3" stroke-linecap="round"></line>
+                                </svg>
+                            </button>
+                            <button class="audio-toggle-btn mini-play" id="music-toggle-btn">
+                                <svg class="play-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                <svg class="pause-icon hidden" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                </svg>
+                            </button>
+                            <button class="player-btn" id="next-track-btn" aria-label="Bài tiếp theo">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                                    <line x1="19" y1="4" x2="19" y2="20" stroke="currentColor" stroke-width="3" stroke-linecap="round"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <audio id="bg-audio" preload="auto" src="https://assets.codepen.io/25868/synthwave-loop.mp3"></audio>
+                </div>
+
+                <div class="control-group">
+                    <div class="playlist-header-row">
+                        <label>Danh Sách Nhạc (Playlist)</label>
+                        <div class="playlist-actions">
+                            <button class="action-icon-btn" id="folder-upload-btn" title="Chọn thư mục nhạc">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </button>
+                            <button class="action-icon-btn" id="files-upload-btn" title="Chọn tệp nhạc">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="playlist-container">
+                        <div class="playlist-items" id="playlist-items">
+                            <!-- Options will be populated dynamically via JavaScript -->
+                        </div>
+                    </div>
+                    <!-- Hidden inputs for directory and file uploads -->
+                    <input type="file" id="folder-input" webkitdirectory directory multiple style="display: none;">
+                    <input type="file" id="files-input" accept="audio/*,video/mp4" multiple style="display: none;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="save-settings-btn" id="save-settings-btn">Hoàn tất</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
