@@ -616,11 +616,18 @@ document.addEventListener('DOMContentLoaded', () => {
     scanMusicDirectory();
 
     // Event Listeners for local triggers
-    folderUploadBtn.addEventListener('click', () => folderInput.click());
-    filesUploadBtn.addEventListener('click', () => filesInput.click());
-
-    folderInput.addEventListener('change', (e) => loadLocalFiles(e.target.files));
-    filesInput.addEventListener('change', (e) => loadLocalFiles(e.target.files));
+    if (folderUploadBtn && folderInput) {
+        folderUploadBtn.addEventListener('click', () => folderInput.click());
+    }
+    if (filesUploadBtn && filesInput) {
+        filesUploadBtn.addEventListener('click', () => filesInput.click());
+    }
+    if (folderInput) {
+        folderInput.addEventListener('change', (e) => loadLocalFiles(e.target.files));
+    }
+    if (filesInput) {
+        filesInput.addEventListener('change', (e) => loadLocalFiles(e.target.files));
+    }
 
     // Playback events (Settings modal)
     musicToggleBtn.addEventListener('click', toggleMusic);
