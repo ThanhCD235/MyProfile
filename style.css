@@ -1292,6 +1292,10 @@ body {
         background-color: var(--bg-dark-base);
     }
     
+    #particle-canvas {
+        z-index: 3; /* Render particles on top of the card on mobile */
+    }
+    
     .app-container {
         padding: 0;
     }
