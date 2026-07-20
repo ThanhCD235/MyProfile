@@ -139,9 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initParticles() {
         particlesArray = [];
-        // Responsive particle count with a minimum of 85 particles for clear visibility on mobile screens
-        const calculatedParticles = Math.floor((canvas.width * canvas.height) / 10000);
-        const numberOfParticles = Math.max(85, calculatedParticles);
+        const numberOfParticles = Math.floor((canvas.width * canvas.height) / 12000); // Responsive particle count
         for (let i = 0; i < numberOfParticles; i++) {
             particlesArray.push(new Particle());
         }
