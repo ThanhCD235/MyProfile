@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        if (particlesEnabled) {
+        if (particlesEnabled && window.innerWidth > 480) {
             particlesArray.forEach(particle => {
                 particle.update();
                 
