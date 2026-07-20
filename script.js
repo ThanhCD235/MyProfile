@@ -29,6 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTrackName = document.getElementById('current-track-name');
     const currentTrackArtist = document.getElementById('current-track-artist');
 
+    // Dynamic access check to hide playlist action buttons on GitHub Pages
+    const playlistActions = document.querySelector('.playlist-actions');
+    if (playlistActions) {
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        if (!isGitHubPages) {
+            playlistActions.style.display = 'flex';
+        }
+    }
+
     // Audio elements & playlist controls (Main screen)
     const mainTrackName = document.getElementById('main-track-name');
     const mainTrackArtist = document.getElementById('main-track-artist');
